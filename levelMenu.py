@@ -53,9 +53,13 @@ def buttonAction(stats, selectedName, setting):
     elif selectedName == 'normal':
         setting.gameLevel = 'normal'
         stats.setGameLoop('playMenu')
+    elif selectedName == 'menu':
+        stats.setGameLoop('mainMenu')
     elif selectedName == 'quit':
         pg.time.delay(300)
         sys.exit()
+    elif selectedName == 'back':
+        stats.setGameLoop('mainMenu')
 
 
 def drawMenu(setting, screen, sb, bMenu, bgImage, bgImageRect):

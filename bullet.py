@@ -7,7 +7,7 @@ from pygame.sprite import Sprite
 class Bullet(Sprite):
     """A class to manage bullets fired from the ship"""
 
-    def __init__(self, setting, screen, ship, traj, charge=0, damage=1):
+    def __init__(self, setting, screen, ship, traj, damage, charge=0):
         """Create a bullet object at the ships current position"""
         super(Bullet, self).__init__()
         self.screen = screen
@@ -18,8 +18,11 @@ class Bullet(Sprite):
         self.isUltimate = False
 
         # load the bullet image and set its rect attribute
-        self.image = pg.image.load('gfx/bullet2.png')
-        self.image = pg.transform.rotate(self.image, 180)
+        self.image = pg.image.load('gfx/pBullet.png')
+        if (self.traj == 1):
+            self.image = pg.transform.rotate(self.image, 315)
+        elif (self.traj == 2):
+            self.image = pg.transform.rotate(self.image, 45)
         self.rect = self.image.get_rect()
         if (charge != 0):
             bulletSize = (self.rect.width * (charge + 1), self.rect.height * (charge + 1))
@@ -34,12 +37,10 @@ class Bullet(Sprite):
         # store the bullets position as a decimal value
         self.x = float(self.rect.centerx)
         self.y = float(self.rect.y)
-        self.color = setting.bulletColor
         self.setting = setting
 
         # damage of basic bullet (default : 1)
         self.damage = damage
-
 
     def update(self):
         """Move the bullet -y up the screen"""
@@ -70,7 +71,7 @@ class Bullet(Sprite):
 class SpecialBullet(Sprite):
     """A class to manage special bullet which can be fired only by the ultimate"""
 
-    def __init__(self, setting, screen, pos):
+    def __init__(self, setting, screen, pos, damage):
         """Create the bullet object at the some position"""
         super(SpecialBullet, self).__init__()
         self.screen = screen
@@ -79,7 +80,7 @@ class SpecialBullet(Sprite):
         self.isUltimate = True
 
         # load the bullet image and set its rect attribute
-        self.image = pg.image.load('gfx/bullet.png')
+        self.image = pg.image.load('gfx/sBullet.png')
         self.rect = self.image.get_rect()
 
         # Create a bullet rect at (0,0)
@@ -92,7 +93,7 @@ class SpecialBullet(Sprite):
         self.setting = setting
 
         # damage of SpecialBullet
-        self.damage = 10
+        self.damage = damage * 10
 
     def update(self):
         """Move the bullet -y up the screen"""

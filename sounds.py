@@ -15,6 +15,18 @@ start_game.set_volume(0.3)
 attack = pg.mixer.Sound("sound_effects/attack.wav")
 attack.set_volume(0.08)
 
+heal_sound = pg.mixer.Sound('sound_effects/heal_sound.wav')
+heal_sound.set_volume(0.4)
+
+slowdown_sound = pg.mixer.Sound('sound_effects/slowdown.wav')
+slowdown_sound.set_volume(0.4)
+
+slow_sound = pg.mixer.Sound('sound_effects/slow_sound.wav')
+slow_sound.set_volume(0.4)
+
+shield_sound = pg.mixer.Sound('sound_effects/shield_sound.wav')
+shield_sound.set_volume(0.4)
+
 ult_attack = pg.mixer.Sound("sound_effects/ult_attack.wav")
 ult_attack.set_volume(0.08)
 
@@ -37,3 +49,6 @@ explosion_sound.set_volume(0.15)
 
 enemy_explosion_sound = pg.mixer.Sound('sound_effects/enemy_explosion.wav')
 enemy_explosion_sound.set_volume(0.4)
+
+enemy_damaged_sound = pg.mixer.Sound('sound_effects/enemy_damaged.wav')
+enemy_damaged_sound.set_volume(0.1)
